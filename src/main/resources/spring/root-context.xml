@@ -39,7 +39,7 @@
     </bean>
     <!-- mybatis -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.sykj.learning.basicweb.*.persistence"/>
+        <property name="basePackage" value="com.github.xianzhuo.library.persistence"/>
     </bean>
     <!-- define the SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

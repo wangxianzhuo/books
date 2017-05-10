@@ -21,3 +21,14 @@ CREATE TABLE book_facts (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE libraries (
+  id           VARCHAR(36) NOT NULL,
+  parent_id    VARCHAR(36) DEFAULT NULL REFERENCES libraries (id),
+  weight       BIGINT      NOT NULL,
+  capacity     BIGINT      DEFAULT 100,
+  size         BIGINT      DEFAULT 0,
+  created_time TIMESTAMP   NOT NULL,
+  updated_time TIMESTAMP   DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+

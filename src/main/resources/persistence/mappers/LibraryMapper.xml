@@ -5,6 +5,10 @@
 <mapper namespace="com.github.xianzhuo.library.persistence.LibraryMapper">
     <resultMap id="LibraryResult" type="com.github.xianzhuo.library.model.Library">
         <id property="id" column="id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="weight" column="weight"/>
+        <result property="capacity" column="capacity"/>
+        <result property="size" column="size"/>
         <result property="createdTime" column="created_time"/>
         <result property="updatedTime" column="updated_time"/>
     </resultMap>

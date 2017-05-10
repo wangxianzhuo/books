@@ -19,12 +19,6 @@ public abstract class AbstractModel {
     public AbstractModel() {
     }
 
-    public AbstractModel(String id, Date createdTime, Date updatedTime) {
-        this.id = id;
-        this.createdTime = createdTime;
-        this.updatedTime = updatedTime;
-    }
-
     public String getId() {
         return id;
     }

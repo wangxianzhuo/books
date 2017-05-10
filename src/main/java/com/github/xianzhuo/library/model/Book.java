@@ -3,6 +3,8 @@ package com.github.xianzhuo.library.model;
 import com.github.xianzhuo.library.common.AbstractModel;
 import com.google.gson.annotations.Expose;
 
+import java.util.Date;
+
 
 /**
  * Created by shangjie on 2017/5/2.
@@ -25,6 +27,8 @@ public class Book extends AbstractModel{
         this.name = name;
         this.publisher = publisher;
         this.authors = authors;
+        generateId();
+        setCreatedTime(new Date());
     }
 
     public String getIsbn() {

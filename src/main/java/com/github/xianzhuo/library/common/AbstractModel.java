@@ -1,4 +1,4 @@
-package com.github.xianzhuo.book.common;
+package com.github.xianzhuo.library.common;
 
 import com.google.gson.annotations.Expose;
 

@@ -1,12 +1,12 @@
-package com.github.xianzhuo.book.model;
+package com.github.xianzhuo.library.model;
 
-import com.github.xianzhuo.book.common.AbstractModel;
+import com.github.xianzhuo.library.common.AbstractModel;
 import com.google.gson.annotations.Expose;
 
 /**
  * Created by shangjie on 2017/5/10.
  */
-public class BookFacts extends AbstractModel{
+public class BookFact extends AbstractModel{
     @Expose
     private String bookId;
     @Expose
@@ -14,10 +14,10 @@ public class BookFacts extends AbstractModel{
     @Expose
     private String value;
 
-    public BookFacts() {
+    public BookFact() {
     }
 
-    public BookFacts(String bookId, String name, String value) {
+    public BookFact(String bookId, String name, String value) {
         this.bookId = bookId;
         this.name = name;
         this.value = value;

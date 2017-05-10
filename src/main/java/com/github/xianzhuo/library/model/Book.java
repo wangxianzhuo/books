@@ -1,6 +1,6 @@
-package com.github.xianzhuo.book.model;
+package com.github.xianzhuo.library.model;
 
-import com.github.xianzhuo.book.common.AbstractModel;
+import com.github.xianzhuo.library.common.AbstractModel;
 import com.google.gson.annotations.Expose;
 
 
@@ -8,8 +8,6 @@ import com.google.gson.annotations.Expose;
  * Created by shangjie on 2017/5/2.
  */
 public class Book extends AbstractModel{
-    @Expose
-    private String id;
     @Expose
     private String isbn;
     @Expose
@@ -22,20 +20,11 @@ public class Book extends AbstractModel{
     public Book() {
     }
 
-    public Book(String id, String isbn, String name, String publisher, String authors) {
-        this.id = id;
+    public Book(String isbn, String name, String publisher, String authors) {
         this.isbn = isbn;
         this.name = name;
         this.publisher = publisher;
         this.authors = authors;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getIsbn() {

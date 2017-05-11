@@ -17,7 +17,7 @@ public interface BookMapper {
     void insert(Book book);
 
     @Update("update books set isbn = #{isbn}, name = #{name}, publisher = #{publisher}, authors = #{authors}," +
-            " updated_time = #{updatedTime} where id = #{id}")
+            " updated_time = now() where id = #{id}")
     void update(Book book);
 
     @Delete("delete from books where id = #{id}")
@@ -27,7 +27,7 @@ public interface BookMapper {
     @ResultMap("BookResult")
     Book find(@Param("id") String id);
 
-    @Select("select id, isbn, name, publisher, authors, created_time, updated_time from books")
+    @Select("select id, isbn, name, publisher, authors, created_time, updated_time from books order by created_time desc")
     @ResultMap("BookResult")
     List<Book> all();
 
@@ -50,6 +50,6 @@ public interface BookMapper {
     @Select("select id, book_id, name, value, created_time, updated_time from book_facts where id = #{id}")
     BookFact findFact(@Param("id") String id);
 
-    @Select("select id, book_id, name, value, created_time, updated_time from book_facts book_id = #{bookId}")
+    @Select("select id, book_id, name, value, created_time, updated_time from book_facts book_id = #{bookId} order by created_time desc")
     List<BookFact> findFactsByBookId(@Param("bookId") String bookId);
 }

@@ -25,11 +25,12 @@ public class LibraryService {
     @Autowired
     private LibraryMapper libraryMapper;
 
-    public void add(Book book) {
+    public Book add(Book book) {
         if (book == null) {
             throw new ServiceException("");
         }
         bookMapper.insert(book);
+        return book;
     }
 
     public Book get(String id) {
@@ -39,5 +40,37 @@ public class LibraryService {
     public List<Book> getAll() {
         List result = bookMapper.all();
         return result == null ? Collections.EMPTY_LIST : result;
+    }
+
+    public void delete(String id) {
+        bookMapper.delete(id);
+    }
+
+    public Book update(Book book) {
+        if (book == null) {
+            throw new ServiceException("");
+        }
+        Book bookInDB = get(book.getId());
+        if (bookInDB == null) {
+            throw new ServiceException("");
+        }
+        if (book.getName() == null || book.getName().trim().isEmpty()) {
+            book.setName(bookInDB.getName());
+        }
+        if (book.getIsbn() == null || book.getIsbn().trim().isEmpty()) {
+            book.setIsbn(bookInDB.getIsbn());
+        }
+        if (book.getPublisher() == null || book.getPublisher().trim().isEmpty()) {
+            book.setPublisher(bookInDB.getPublisher());
+        }
+        if (book.getAuthors() == null || book.getAuthors().trim().isEmpty()) {
+            book.setAuthors(bookInDB.getAuthors());
+        }
+        if (book.getCreatedTime() == null) {
+            book.setCreatedTime(bookInDB.getCreatedTime());
+        }
+        
+        bookMapper.update(book);
+        return book;
     }
 }

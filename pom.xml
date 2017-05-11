@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.xianzhuo.book</groupId>
-    <artifactId>uniform-web</artifactId>
+    <artifactId>library-web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Library Maven Webapp</name>
@@ -277,7 +277,7 @@
     </dependencies>
 
     <build>
-        <finalName>uniform-web</finalName>
+        <finalName>library-web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

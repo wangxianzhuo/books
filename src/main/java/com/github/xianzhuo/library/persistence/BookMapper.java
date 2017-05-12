@@ -17,7 +17,7 @@ public interface BookMapper {
     void insert(Book book);
 
     @Update("update books set isbn = #{isbn}, name = #{name}, publisher = #{publisher}, authors = #{authors}," +
-            " updated_time = now() where id = #{id}")
+            " updated_time = #{updatedTime} where id = #{id}")
     void update(Book book);
 
     @Delete("delete from books where id = #{id}")

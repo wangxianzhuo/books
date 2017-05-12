@@ -11,6 +11,7 @@
     <title>家庭图书馆</title>
 </head>
 <body>
-
+<a href="/books">books</a>
+<a href="/libraries">libraries</a>
 </body>
 </html>

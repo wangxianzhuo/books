@@ -19,7 +19,6 @@
         <c:if test="${not empty message}">
             <p>${message}</p>
         </c:if>
-        ${exception}
     </div>
 </div>
 </body>

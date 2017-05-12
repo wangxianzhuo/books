@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class Library extends AbstractModel {
     @Expose
+    private String name;
+    @Expose
     private String parentId;
     @Expose
     private Integer weight;
@@ -21,13 +23,22 @@ public class Library extends AbstractModel {
     public Library() {
     }
 
-    public Library(String parentId, Integer weight, Long capacity, Long size) {
+    public Library(String name, String parentId, Integer weight, Long capacity, Long size) {
+        this.name = name;
         this.parentId = parentId;
         this.weight = weight;
         this.capacity = capacity;
         this.size = size;
         generateId();
         setCreatedTime(new Date());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getParentId() {

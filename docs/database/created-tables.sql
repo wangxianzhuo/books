@@ -23,7 +23,8 @@ CREATE TABLE book_facts (
 
 CREATE TABLE libraries (
   id           VARCHAR(36) NOT NULL,
-  parent_id    VARCHAR(36) DEFAULT NULL REFERENCES libraries (id),
+  name         TEXT        NOT NULL,
+  parent_id    VARCHAR(36) DEFAULT NULL,
   weight       BIGINT      NOT NULL,
   capacity     BIGINT      DEFAULT 100,
   size         BIGINT      DEFAULT 0,

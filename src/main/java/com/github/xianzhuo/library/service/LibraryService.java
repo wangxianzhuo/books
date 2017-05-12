@@ -2,6 +2,7 @@ package com.github.xianzhuo.library.service;
 
 import com.github.xianzhuo.library.common.ServiceException;
 import com.github.xianzhuo.library.model.Book;
+import com.github.xianzhuo.library.model.Library;
 import com.github.xianzhuo.library.persistence.BookMapper;
 import com.github.xianzhuo.library.persistence.LibraryMapper;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,6 +45,9 @@ public class LibraryService {
     }
 
     public void delete(String id) {
+        if (get(id) == null) {
+            return;
+        }
         bookMapper.delete(id);
     }
 
@@ -69,8 +74,65 @@ public class LibraryService {
         if (book.getCreatedTime() == null) {
             book.setCreatedTime(bookInDB.getCreatedTime());
         }
+        book.setUpdatedTime(new Date());
         
         bookMapper.update(book);
         return book;
+    }
+
+    public Library addLibrary(Library library) {
+        if (library == null) {
+            throw new ServiceException("");
+        }
+        libraryMapper.insert(library);
+        return library;
+    }
+
+    public Library getLibrary(String id) {
+        return libraryMapper.find(id);
+    }
+
+    public List<Library> getAllLibraries() {
+        List result = libraryMapper.all();
+        return result == null ? Collections.EMPTY_LIST : result;
+    }
+
+    public void deleteLibrary(String id) {
+        if (getLibrary(id) == null) {
+            return;
+        }
+        libraryMapper.delete(id);
+    }
+
+    public Library updateLibrary(Library library) {
+        if (library == null) {
+            throw new ServiceException("");
+        }
+        Library libraryInDB = getLibrary(library.getId());
+        if (libraryInDB == null) {
+            throw new ServiceException("");
+        }
+        if (library.getName() == null || library.getName().trim().isEmpty()) {
+            library.setName(libraryInDB.getName());
+        }
+        if (library.getParentId() == null || library.getParentId().trim().isEmpty()) {
+            library.setParentId(libraryInDB.getParentId());
+        }
+        if (library.getCapacity() == null) {
+            library.setCapacity(libraryInDB.getCapacity());
+        }
+        if (library.getSize() == null) {
+            library.setSize(libraryInDB.getSize());
+        }
+        if (library.getWeight() == null) {
+            library.setWeight(libraryInDB.getWeight());
+        }
+        if (library.getCreatedTime() == null) {
+            library.setCreatedTime(libraryInDB.getCreatedTime());
+        }
+
+        library.setUpdatedTime(new Date());
+        libraryMapper.update(library);
+        return library;
     }
 }
